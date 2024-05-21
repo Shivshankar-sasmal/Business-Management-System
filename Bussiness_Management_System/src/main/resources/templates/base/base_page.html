@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="header">
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="Manage your Business For Free">
+		
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+		
+		<!--UPkg CSS-->
+		<!--<link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">-->
+		<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap/dist/css/jsvectormap.min.css">-->
+		<!--<link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/maps/map-2/assets/css/map-2.css">-->
+ 		<!--<link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/logins/login-5/assets/css/login-5.css">-->	
+		
+		<!--Custom CSS-->
+		<link rel="stylesheet" type="text/css" href="/css/main.css">   
+		
+		<!--Javascript Files-->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>	
+		
+		<!--Custom JS-->
+		<script src="/js/main.js"></script>
+		
+		<!--Title -->
+		<title th:text="${title}"></title>		
+    </head>
+	
+	<body class="container-fluid">
+		
+		<nav class="fixed-top navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar">
+		    <div class="container-fluid">
+		        <a href="" th:href="@{/}"  class="font-weight-bolder text-dark h4 text-decoration-none my-auto mx-3">BUSSINESS SYSTEM</a>
+		        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+		            <span class="navbar-toggler-icon"></span>
+		        </button>
+		        <div class="collapse navbar-collapse" id="navbarCollapse">
+		            <div class="navbar-nav text-uppercase">
+						<span th:if="${USER}">
+							<a href="" th:href="@{/admin}" class="nav-item nav-link active text-danger" th:if="${USER.is_superuser}">Admin</a>
+						</span>	
+		                <a href=""	th:href="@{/}" class="nav-item nav-link active">Home</a>
+		                <a href="" 	th:href="@{/about}" class="nav-item nav-link">About</a>
+						<a href="" 	th:href="@{/company}" class="nav-item nav-link">Company</a>
+						<a href="" 	th:href="@{/bank}" class="nav-item nav-link">Bank</a>
+		            </div>
+		            <div class="navbar-nav ms-auto text-uppercase" th:if="${USER}">
+						<a href="" th:href="@{/profile}" class="nav-item nav-link text-primary" th:text="${USER.username}"></a>	
+						<a href="" th:href="@{/logout}" class="nav-item nav-link">Logout</a>			                
+		            </div>
+					<div class="navbar-nav ms-auto text-uppercase" th:unless="${USER}">
+						<a href="" th:href="@{/login}" class="nav-item nav-link">Login</a>
+						<a href="" th:href="@{/register}" class="nav-item nav-link">Register</a>
+					</div>					
+		        </div>
+		    </div>
+		</nav>
+		
+		<div class="fixed-top my-5" th:fragment="error">
+			<!-- Error -->
+			<div class="container mt-4" th:if="${messages}">
+				<div th:each="message : ${messages}" class="mx-2">
+					<div class="alert bg-dark text-white alert-dismissible fade show" role="alert" data-dismiss="alert" aria-label="close" data-bs-dismiss="alert">
+					  <label class="d-flex justify-content-between">
+						  <b th:text="${message}" class="small">Error</b>
+						  <a class="close text-decoration-none text-white" data-dismiss="alert" aria-label="close" data-bs-dismiss="alert">&times;</a>						  
+					  </label>
+					</div>
+				</div>
+			</div>				
+			<!-- End Error -->
+		</div>
+		
+		
+		<div class="mt-5" th:fragment="margin-top">&nbsp;</div>
+		
+		
+		<div class="row" th:fragment="search-bar">
+		    <div class="col-12 mt-3">
+				<form action="" th:action="@{/admin/users}" method="get">
+			        <div class="input-group w-75 mx-auto">
+						<input class="form-control rounded-pill py-2 pr-5 mr-1 bg-light px-4" name="search" type="search" value="" placeholder="Search ..." id="search" autocomplete="off" th:value="${search}">
+						
+						<button class="btn btn-outline-dark my-sm-0 rounded-pill mx-1" type="submit">Search</button>							
+			        </div>
+				</form>
+		    </div>
+		</div>
+		
+		
+		<section class="container content">
+			<!-- Page Content -->							
+			<!-- End Page Content -->
+		</section>					
+		
+		
+		<footer class="bg-light text-dark py-1 fixed-bottom" th:fragement="footer">
+			<div class="small text-center">&copy; 2024 Business Management System.</div>
+		</footer>>
+	</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{base/base_page :: header}">
+	</head>
+
+	<body class="container-fluid">		
+		<nav th:replace="~{base/base_page :: navbar}">
+			<!-- Navbar -->
+			<!--Inheriting Navbar Code Here From Base Page-->
+			<!-- Navbar End -->
+		</nav>
+		
+		<div th:replace="~{base/base_page :: error}"></div>
+		
+		<div th:replace="~{base/base_page :: margin-top}"></div>
+
+		<section class="p-3 p-md-4 p-xl-5">
+		  <!--Page Content-->
+		  <div class="container">
+		    <div class="subtle">
+		      <div class="row g-0 justify-content-between">
+		        <div class="col-12 col-md-4 d-none d-md-block rounded p-3" th:if="${USER}">
+					<div class="card p-4 border-0 shadow shadow-sm">
+					  <img src="/images/user/user_default.png" class="card-img-top img-fluid rounded-circle p-3 profile mx-auto mt-5 shadow" alt="">
+					  <strong class="mt-4 text-center blockquote" th:text="${USER.username}">Username</strong>	
+					  <div class="text-center small text-muted" th:text="${USER.email}">Email</div>				
+					  <div class="card-body p-5">
+					    <h5 class="card-title h2 text-center" th:text="${USER.first_name}">First Name</h5>
+						<h5 class="card-title h2 text-center" th:text="${USER.last_name}">Last Name</h5>						
+					    <p class="card-text my-5 text-center" th:text="${USER.something_about_you}">Something About You In Short Details and Precise</p>
+						<div class="d-flex justify-content-center lead my-2">
+							<span class="badge bg-dark mx-2 px-3 text-uppercase">Active</span>
+							<span class="badge bg-dark mx-2 px-3 text-uppercase" th:if="${USER.is_superuser}">Superuser</span>
+						</div>						
+					  </div>
+					</div>					
+		        </div>
+		        <div class="col-12 col-md-7 shadow shadow-lg">
+		          <div class="card card-body p-3 p-md-4 p-xl-5">
+		            <div class="row">
+		              <div class="col-12">
+		                <div class="mb-5">
+		                  <h3>Update Profile</h3>
+		                </div>
+		              </div>
+		            </div>
+		            <form action="" th:action="@{/profile}" method="post" class="small" enctype="multipart/form-data" th:object="${USER}">
+		              <div class="row gy-3 gy-md-4 overflow-hidden">
+		                <div class="col-12">
+		                  <label for="username" class="form-label">Username<span class="text-danger">*</span></label>
+		                  <input type="text" class="form-control" name="username" id="username" placeholder="shivshankar" autocomplete="off" required th:field="*{username}">
+		                </div>
+						<div class="col-12 col-lg-6 col-mg-6 col-sm-12">
+						  <label for="first_name" class="form-label">First Name<span class="text-danger">*</span></label>
+						  <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Shivshankar" autocomplete="off" required th:field="*{first_name}">
+						</div>	
+						<div class="col-12 col-lg-6 col-mg-6 col-sm-12">
+						  <label for="last_name" class="form-label">Last Name<span class="text-danger">*</span></label>
+						  <input type="text" class="form-control" name="last_name" id="first_name" placeholder="Sasmal" autocomplete="off" required th:field="*{last_name}">
+						</div>					
+						<div class="col-12">
+						  <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
+						  <input type="email" class="form-control" name="email" id="email" placeholder="shivshankar72242@gmail.com" autocomplete="off" required	th:field="*{email}">
+						</div>				
+						<div class="col-12">
+						  <label for="email" class="form-label">Something About Yourself</label>
+						  <textarea class="form-control" id="aboutYou" rows="7" placeholder="A Person who has desire to work for the betterment of mankind" th:field="*{something_about_you}"></textarea>
+						</div>	
+						<!--<div id="image" class="form-group">
+						  <label for="image" class=" requiredField">Image<span class="asteriskField text-danger">*</span></label>
+						  <div>
+						   		<span class="mx-3">Change :</span>
+						        <input type="file" name="image" accept="image/*" class="clearablefileinput form-control-file" id="image" required>
+						  </div>
+						</div>-->		
+						<div class="py-2">
+							<div class="form-check col-12 col-lg-6 col-mg-6 col-sm-12">
+							  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled>
+							  <label class="form-check-label" for="flexCheckChecked"><strong>Active</strong></label>
+							</div>						
+							<div class="form-check col-12 col-lg-6 col-mg-6 col-sm-12 py-1" th:if="${USER.is_superuser}">
+							  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled>
+							  <label class="form-check-label" for="flexCheckChecked"><strong>Superuser</strong></label>
+							</div>
+							<div class="form-check col-12 col-lg-6 col-mg-6 col-sm-12 py-1" th:unless="${USER.is_superuser}">
+							  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled>
+							  <label class="form-check-label" for="flexCheckChecked"><strong>Superuser</strong></label>
+							</div>							
+						</div>
+						<div class="col-12 col-lg-6 col-mg-6 col-sm-12">
+						  <label for="total_profit" class="form-label">Total Profit<span class="text-danger">*</span></label>
+						  <input type="text" class="form-control" name="total_profit" id="total_profit" placeholder="0" autocomplete="off" required	th:field="*{total_profit}">
+						</div>								
+						<div class="col-12 col-lg-6 col-mg-6 col-sm-12">
+						  <label for="total_loss" class="form-label">Total Loss<span class="text-danger">*</span></label>
+						  <input type="text" class="form-control" name="total_loss" id="total_loss" placeholder="0" autocomplete="off" required	th:field="*{total_loss}">
+						</div>					
+						<div class="col-12">
+						  <label for="total_amount" class="form-label">Total Amount<span class="text-danger">*</span></label>
+						  <input type="text" class="form-control" name="total_amount" id="username" placeholder="1000000" autocomplete="off" required th:field="*{total_amount}">
+						</div>									
+		                <div class="col-12">
+		                  <div class="my-3">
+		                    <button class="btn btn-outline-dark px-5" type="submit">Update Profile</button>
+		                  </div>
+		                </div>
+		              </div>
+		            </form>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		  <!--End Page Content-->
+		</section>					
+		
+		<footer th:replace="~{base/base_page :: footer}">
+			<!--Footer Content-->
+		</footer>				
+	</body>		
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{base/base_page :: header}">
+	</head>
+
+	<body class="container-fluid">		
+		<nav th:replace="~{base/base_page :: navbar}">
+			<!-- Navbar -->
+			<!--Inheriting Navbar Code Here From Base Page-->
+			<!-- Navbar End -->
+		</nav>
+		
+		<div th:replace="~{base/base_page :: error}"></div>
+		
+		<div th:replace="~{base/base_page :: margin-top}"></div>
+
+		<section class="container">
+			<!-- Page Content -->						
+			<div class="d-flex justify-content-center text-uppercase">
+				<a href="" th:href="@{/admin/users}" class="m-3 px-5 btn btn-outline-dark">Users</a>
+				<a href="" th:href="@{/admin/company}" class="m-3 px-5 btn btn-outline-dark">Company</a>
+			</div>
+			<!-- End Page Content -->
+		</section>				
+		
+
+		<footer th:replace="~{base/base_page :: footer}">
+			<!--Footer Content-->
+		</footer>				
+	</body>		
+</html>

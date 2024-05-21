@@ -1,0 +1,48 @@
+.alert {
+	padding: 5px;
+	padding-left: 20px;
+}
+
+.close{
+	padding-right: 20px;
+}
+
+
+.profile{
+	width: 60%;
+}
+
+.big{
+	font-size: 120px !important;
+}
+
+.bigger{
+	font-size: 170px !important;
+}
+
+.table-small {
+	font-size: 12px;
+}
+
+
+td,th {
+  vertical-align: middle;
+}
+
+
+td,th {
+  align-items: center;
+  justify-content: center;
+  padding: 3px 15px!important;
+}
+
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+
+
+.link-small{
+	font-size: 10px !important;
+}

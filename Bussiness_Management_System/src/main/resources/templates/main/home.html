@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{base/base_page :: header}">
+	</head>
+
+	<body class="container-fluid">		
+		<nav th:replace="~{base/base_page :: navbar}">
+			<!-- Navbar -->
+			<!--Inheriting Navbar Code Here From Base Page-->
+			<!-- Navbar End -->
+		</nav>
+		
+		<div th:replace="~{base/base_page :: error}"></div>
+		
+		<div th:replace="~{base/base_page :: margin-top}"></div>
+
+		<section class="container">
+			<!-- Page Content -->			
+			<div class="row my-3">
+				<div class="col-11 col-lg-3 col-md-5 col-sm-11 px-2 my-2 shadow rounded mx-auto">
+					<div class="card border-0 p-2">
+					  <div class="card-body px-2">
+					    <h5 class="card-title h2 display-6 my-3 text-uppercase">Company Name</h5>
+						<span class="badge bg-dark m-2 px-3 text-uppercase">Category</span>
+						<div class="px-4 py-1">
+							<p class="card-text text-muted py-2 text-uppercase py-2">With supporting text below as a natural lead-in to additional content.</p>							
+						</div>
+						
+						<div class="d-flex justify-content-center my-2">
+							<span class="badge bg-success m-2 px-2 py-2 text-uppercase">Total Profit 0</span>
+							<span class="badge bg-danger m-2 px-2 py-2 text-uppercase">Total Loss 0</span>
+						</div>
+						
+						<div class="d-flex justify-content-center my-2 d-grid">
+							<span class="badge bg-info m-2 px-5 py-2 text-uppercase">Total Amount 0</span>
+						</div>
+						
+						<div class="d-grid">
+							<a href="" class="btn btn-outline-dark my-4 text-uppercase px-5">Goto Company</a>
+						</div>
+					  </div>
+					</div>
+				</div>
+			</div>						
+			<!-- End Page Content -->
+		</section>				
+		
+		<footer th:replace="~{base/base_page :: footer}">
+			<!--Footer Content-->
+		</footer>				
+	</body>		
+</html>

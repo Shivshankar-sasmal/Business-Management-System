@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{base/base_page :: header}">
+	</head>
+
+	<body class="container-fluid">		
+	
+		<div th:replace="~{base/base_page :: error}"></div>
+		
+		<div th:replace="~{base/base_page :: margin-top}"></div>
+
+		<section class="py-md-5 min-vh-50 d-flex justify-content-center align-items-center">
+		  <!--Page Content-->
+		  <div class="container">
+		    <div class="row">
+		      <div class="col-12">
+		        <div class="text-center">
+					<h2 class="d-flex justify-content-center align-items-center gap-2 mb-4">
+					  <span class="display-1 fw-bold big">4</span>
+					  <span class="display-1 fw-bold text-danger bigger">O</span>
+					  <span class="display-1 fw-bold bsb-flip-h big">4</span>
+					</h2>
+		          <h3 class="h2 mb-2">Oops! You're lost.</h3>
+		          <p class="mb-5">The page you are looking for was not found.</p>
+		          <div class="mx-auto">
+					<a class="btn btn-outline-dark px-5" href="" th:href="@{/}" role="button">Back to Home</a>
+				  </div>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		  <!--End Page Content-->
+		</section>				
+		
+		<footer th:replace="~{base/base_page :: footer}">
+			<!--Footer Content-->
+		</footer>				
+	</body>		
+</html>
