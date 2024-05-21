@@ -29,7 +29,7 @@
 						<h5 class="card-title h2 text-center" th:text="${USER.last_name}">Last Name</h5>						
 					    <p class="card-text my-5 text-center" th:text="${USER.something_about_you}">Something About You In Short Details and Precise</p>
 						<div class="d-flex justify-content-center lead my-2">
-							<span class="badge bg-dark mx-2 px-3 text-uppercase">Active</span>
+							<span class="badge bg-dark mx-2 px-3 text-uppercase" th:if="${USER.is_active}">Active</span>
 							<span class="badge bg-dark mx-2 px-3 text-uppercase" th:if="${USER.is_superuser}">Superuser</span>
 						</div>						
 					  </div>
@@ -74,10 +74,14 @@
 						  </div>
 						</div>-->		
 						<div class="py-2">
-							<div class="form-check col-12 col-lg-6 col-mg-6 col-sm-12">
+							<div class="form-check col-12 col-lg-6 col-mg-6 col-sm-12 py-1" th:if="${USER.is_active}">
 							  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled>
 							  <label class="form-check-label" for="flexCheckChecked"><strong>Active</strong></label>
-							</div>						
+							</div>
+							<div class="form-check col-12 col-lg-6 col-mg-6 col-sm-12 py-1" th:unless="${USER.is_active}">
+							  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled>
+							  <label class="form-check-label" for="flexCheckChecked"><strong>Active</strong></label>
+							</div>					
 							<div class="form-check col-12 col-lg-6 col-mg-6 col-sm-12 py-1" th:if="${USER.is_superuser}">
 							  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled>
 							  <label class="form-check-label" for="flexCheckChecked"><strong>Superuser</strong></label>
