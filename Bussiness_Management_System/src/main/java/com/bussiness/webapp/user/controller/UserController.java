@@ -34,7 +34,7 @@ public class UserController {
 	
 	@GetMapping("/register")
 	public String get_register(Model model) {
-		model.addAttribute("TITLE", "REGISTER");
+		model.addAttribute("title", "REGISTER");
 		model.addAttribute("USER", CurrentUser.user);
 		model.addAttribute("user_register", UserService_service.create_new_user());
 		return "authenticate/register";
@@ -59,6 +59,7 @@ public class UserController {
 	
 	@GetMapping("/login")
 	public String get_login(Model model) {		
+		model.addAttribute("title", "LOGIN");
 		model.addAttribute("USER", CurrentUser.user);
 		model.addAttribute("messages", ErrorFetch.get_error_list());
 		
@@ -77,7 +78,9 @@ public class UserController {
 		}
 		
 		ErrorFetch.add("Username or Password is Incorrect");		
-		return "redirect:/login";
+		model.addAttribute("username", username);
+		model.addAttribute("messages", ErrorFetch.get_error_list());
+		return "authenticate/login";
 	}
 	
 

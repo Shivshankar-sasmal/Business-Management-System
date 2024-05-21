@@ -81,7 +81,7 @@
 					  <td th:text="${user.created_date}"></td>
 					  <td th:text="${user.updated_by}"></td>
 					  <td th:text="${user.updated_date}"></td>
-					  <td th:text="${T(com.app.bussiness.encrypt.Encrypt_Decrypt).decrypt(user.password)}"></td>
+					  <td th:text="${T(com.bussiness.webapp.validate.encryption_decryption.Encrypt_Decrypt).decrypt(user.password)}"></td>
 					  <td class="mx-3 link-small"><a href="" th:href="@{/admin/user/update/{user_id}(user_id=${user.user_id})}" class="btn btn-sm btn-primary px-3 link-small">Update</a></td>
 					  <td class="mx-3 link-small"><a href="" th:href="@{/admin/user/delete/{user_id}(user_id=${user.user_id})}" class="btn btn-sm btn-danger px-3 link-small">Delete</a></td>
 				    </tr>

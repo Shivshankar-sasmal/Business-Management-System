@@ -1,5 +1,7 @@
 package com.bussiness.webapp.user.validate;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
@@ -38,6 +40,8 @@ public class UserRegisterSaveValidate {
 		
 		if ( ErrorFetch.error_list_count() == 0 ) {
 			user_register.setPassword(Encrypt_Decrypt.encrypt(user_register.getPassword()));
+			user_register.setCreated_by("system");
+			user_register.setCreated_date( LocalDateTime.now() );
 			UserDTO_dto.save(user_register);			
 			return true;
 		}
