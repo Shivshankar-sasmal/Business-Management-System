@@ -43,7 +43,7 @@ public class UserProfileSaveValidate {
 		
 		if( ErrorFetch.error_list_count() == 0 ) {
 			UserEntity user_update_new = UserDTO_dto.findOneByUsername(user_update.getUsername());
-			user_update_new.setUsername( user_update.getUsername() );
+			user_update_new.setUsername( user_update.getUsername().trim().strip() );
 			user_update_new.setFirst_name( user_update.getFirst_name() );
 			user_update_new.setLast_name( user_update.getLast_name() );
 			user_update_new.setEmail( user_update.getEmail() );
@@ -51,7 +51,7 @@ public class UserProfileSaveValidate {
 			user_update_new.setTotal_amount( user_update.getTotal_amount() );
 			user_update_new.setTotal_profit( user_update.getTotal_profit() );
 			user_update_new.setTotal_loss( user_update.getTotal_loss() );
-			user_update_new.setUpdated_by( user_update.getUser_id() + "_" + user_update.getUsername() );
+			user_update_new.setUpdated_by( user_update.getUsername() );
 			user_update_new.setUpdated_date( LocalDateTime.now() );
 			UserDTO_dto.save(user_update_new);
 			CurrentUser.user = user_update_new;

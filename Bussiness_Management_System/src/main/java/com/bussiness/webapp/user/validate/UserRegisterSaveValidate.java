@@ -40,6 +40,7 @@ public class UserRegisterSaveValidate {
 		
 		if ( ErrorFetch.error_list_count() == 0 ) {
 			user_register.setPassword(Encrypt_Decrypt.encrypt(user_register.getPassword()));
+			user_register.setUsername( user_register.getUsername().trim().strip() );
 			user_register.setCreated_by("system");
 			user_register.setCreated_date( LocalDateTime.now() );
 			UserDTO_dto.save(user_register);			
