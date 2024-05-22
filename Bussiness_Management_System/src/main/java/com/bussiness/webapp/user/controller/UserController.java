@@ -73,7 +73,6 @@ public class UserController {
 		model.addAttribute("title", "LOGIN");
 		
 		if ( UserLoginValidate_validate.user_login_validate(username, password) ) {
-			ErrorFetch.add("You have logged in Successfully");
 			return "redirect:/";
 		}
 		
