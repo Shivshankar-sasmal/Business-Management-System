@@ -1,7 +1,6 @@
 package com.bussiness.webapp.user.entity;
 
 import java.time.LocalDateTime;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,7 +20,7 @@ public class UserEntity {
 	
 	@Size(min = 3, max = 25, message = "Username must be between 3 - 25 characters")
 	@Column(nullable = false, unique = true, length=25)
-	private String username = "";	
+	private String username;	
 	
 	
 	@Size(min = 3, max = 75, message = "First Name must be between 3 - 75 characters")
@@ -85,7 +84,9 @@ public class UserEntity {
 	
 	@Column(nullable = false, unique = false)
 	private LocalDateTime updated_date = LocalDateTime.now();
-
+	
+	
+	
 	
 	// Constructors
 	

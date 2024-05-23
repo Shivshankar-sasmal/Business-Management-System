@@ -1,6 +1,9 @@
 package com.bussiness.webapp.admin.services;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +24,8 @@ public class AdminServices {
 		else {
 			search_result = AdminUsersDTO_dto.findAllBySearch(search);
 		}		
-
+		
+		Collections.sort(search_result, Comparator.comparing(UserEntity::getUser_id));
 		return search_result;
 	}
 		
@@ -29,6 +33,11 @@ public class AdminServices {
 	
 	public void admin_user_delete(Long user_id) {
 		AdminUsersDTO_dto.deleteById(user_id);
+	}
+	
+	
+	public Optional<UserEntity> get_user(Long user_id) {
+		return AdminUsersDTO_dto.findById(user_id);
 	}
 	
 }
