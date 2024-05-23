@@ -32,7 +32,7 @@ public class AdminUserUpdateSave {
 			user_update_new.setFirst_name( user_update.getFirst_name() );
 			user_update_new.setLast_name( user_update.getLast_name() );
 			user_update_new.setEmail( user_update.getEmail() );
-			user_update.setSomething_about_you( user_update.getSomething_about_you() );
+			user_update_new.setSomething_about_you( user_update.getSomething_about_you() );
 			user_update_new.setTotal_amount( user_update.getTotal_amount() );
 			user_update_new.setTotal_profit( user_update.getTotal_profit() );
 			user_update_new.setTotal_loss( user_update.getTotal_loss() );

@@ -50,7 +50,7 @@ public class AdminUserController {
 		
 		if ( CurrentUser.user.isIs_superuser() == false ) {
 			ErrorFetch.add("You are not authorized to Login");
-			return "redirect:/logout";
+			return "redirect:/";
 		}		
 		
 		return "admin/users/admin_users";
@@ -71,7 +71,7 @@ public class AdminUserController {
 		
 		if ( CurrentUser.user.isIs_superuser() == false ) {
 			ErrorFetch.add("You are not authorized to Login");
-			return "redirect:/logout";
+			return "redirect:/";
 		}	
 		
 		model.addAttribute("admin_user_update", AdminServices_services.get_user(user_id));
@@ -87,6 +87,7 @@ public class AdminUserController {
 		
 		if ( AdminUserUpdateSave_validate.admin_user_update_save(admin_user_update, result, user_id) ) {
 			ErrorFetch.add("User Details has been added successfully");
+			return "redirect:/admin/users";
 		}
 		
 		return "redirect:/admin/users/update/"+user_id;
@@ -105,7 +106,7 @@ public class AdminUserController {
 		
 		if ( CurrentUser.user.isIs_superuser() == false ) {
 			ErrorFetch.add("You are not authorized to Login");
-			return "redirect:/logout";
+			return "redirect:/";
 		}	
 		
 		

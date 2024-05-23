@@ -1,3 +1,10 @@
+::selection {
+  background-color: black;
+  color: white;
+}
+
+
+
 .alert {
 	padding: 5px;
 	padding-left: 20px;

@@ -25,7 +25,7 @@ public class AdminCompanyController {
 		
 		if ( CurrentUser.user.isIs_superuser() == false ) {
 			ErrorFetch.add("You are not authorized to Login");
-			return "redirect:/logout";
+			return "redirect:/";
 		}		
 		
 		return "admin/company/admin_company";
