@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.bussiness.webapp.current_user.CurrentUser;
 import com.bussiness.webapp.error.ErrorFetch;
 import com.bussiness.webapp.user.entity.UserEntity;
+import com.bussiness.webapp.validate.user.AdminUserUpdateSave;
 
 import jakarta.validation.Valid;
 
 import com.bussiness.webapp.admin.services.AdminServices;
-import com.bussiness.webapp.user.validate.AdminUserUpdateSave;
 
 
 @Controller

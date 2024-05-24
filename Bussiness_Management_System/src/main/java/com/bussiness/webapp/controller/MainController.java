@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.bussiness.webapp.current_user.CurrentUser;
 import com.bussiness.webapp.error.ErrorFetch;
 import com.bussiness.webapp.user.entity.UserEntity;
-import com.bussiness.webapp.user.validate.UserProfileSaveValidate;
+import com.bussiness.webapp.validate.user.UserProfileSaveValidate;
 
 import jakarta.validation.Valid;
 

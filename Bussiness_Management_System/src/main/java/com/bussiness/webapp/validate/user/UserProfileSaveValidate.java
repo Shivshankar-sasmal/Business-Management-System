@@ -1,4 +1,4 @@
-package com.bussiness.webapp.user.validate;
+package com.bussiness.webapp.validate.user;
 
 import java.time.LocalDateTime;
 
@@ -6,29 +6,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+
+import com.bussiness.webapp.current_user.CurrentUser;
 import com.bussiness.webapp.error.ErrorFetch;
+import com.bussiness.webapp.user.DTO.UserDTO;
 import com.bussiness.webapp.user.entity.UserEntity;
-import com.bussiness.webapp.admin.DTO.AdminUsersDTO;
 
 @Service
-public class AdminUserUpdateSave {
+public class UserProfileSaveValidate {
+	
 	@Autowired
-	AdminUsersDTO adminUsersDTO_dto;
+	UserDTO UserDTO_dto;
 	
 	
-	public boolean admin_user_update_save(UserEntity user_update, BindingResult result, Long user_id) {
-		
+	public boolean user_profile_save(UserEntity user_update, BindingResult result) {
+				
 		for (FieldError error : result.getFieldErrors()) {
 			ErrorFetch.add(error.getDefaultMessage().toString());
 		}
+		
+		
+		if ( ! user_update.getUsername().equals(CurrentUser.user.getUsername()) ) {
+				ErrorFetch.add("Username Already Exists");
+		}
+		
+	
+		if ( ! user_update.getEmail().equals(CurrentUser.user.getEmail()) ) {
+				ErrorFetch.add("Email Already Exists");
+		}
+
 		
 		if ( user_update.getTotal_amount() <= 0 ) {
 			ErrorFetch.add("Total Amount Cannot Be 0 or Less than 0");
 		}
 		
 		
-		if( ErrorFetch.error_list_count() == 0 ) {			
-			UserEntity user_update_new = adminUsersDTO_dto.findOneByUser_Id( user_id );
+		if( ErrorFetch.error_list_count() == 0 ) {
+			UserEntity user_update_new = UserDTO_dto.findOneByUsername( user_update.getUsername() );
+			user_update_new.setUsername( user_update.getUsername().trim().strip() );
 			user_update_new.setFirst_name( user_update.getFirst_name() );
 			user_update_new.setLast_name( user_update.getLast_name() );
 			user_update_new.setEmail( user_update.getEmail() );
@@ -36,17 +51,13 @@ public class AdminUserUpdateSave {
 			user_update_new.setTotal_amount( user_update.getTotal_amount() );
 			user_update_new.setTotal_profit( user_update.getTotal_profit() );
 			user_update_new.setTotal_loss( user_update.getTotal_loss() );
-			user_update_new.setCreated_by( user_update.getCreated_by() );
-			user_update_new.setCreated_date( user_update.getCreated_date() );
-			user_update_new.setUpdated_by( "system" );
+			user_update_new.setUpdated_by( user_update.getUsername() );
 			user_update_new.setUpdated_date( LocalDateTime.now() );
-			user_update.setPassword( user_update.getPassword() );
-			user_update.setIs_active( user_update.isIs_active() );
-			user_update_new.setIs_superuser( user_update.isIs_superuser() );
-			adminUsersDTO_dto.save( user_update_new );
+			UserDTO_dto.save(user_update_new);
+			CurrentUser.user = user_update_new;
 			return true;
 		}	
-		
+				
 		return false;
 	}
 

@@ -1,4 +1,4 @@
-package com.bussiness.webapp.user.validate;
+package com.bussiness.webapp.validate.user;
 
 import java.time.LocalDateTime;
 

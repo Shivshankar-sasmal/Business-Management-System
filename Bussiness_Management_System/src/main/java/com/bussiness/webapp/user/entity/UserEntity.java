@@ -82,8 +82,8 @@ public class UserEntity {
 	private LocalDateTime created_date = LocalDateTime.now();
 	
 	
-	@Column(nullable = false, unique = false)
-	private LocalDateTime updated_date = LocalDateTime.now();
+	@Column(nullable = true, unique = false)
+	private LocalDateTime updated_date;
 	
 	
 	

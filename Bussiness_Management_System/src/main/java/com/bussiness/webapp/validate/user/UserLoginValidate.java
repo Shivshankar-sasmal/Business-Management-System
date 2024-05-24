@@ -1,4 +1,4 @@
-package com.bussiness.webapp.user.validate;
+package com.bussiness.webapp.validate.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

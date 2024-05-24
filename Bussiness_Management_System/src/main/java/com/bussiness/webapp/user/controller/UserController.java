@@ -1,8 +1,8 @@
 package com.bussiness.webapp.user.controller;
 
 import com.bussiness.webapp.user.service.UserService;
-import com.bussiness.webapp.user.validate.UserLoginValidate;
-import com.bussiness.webapp.user.validate.UserRegisterSaveValidate;
+import com.bussiness.webapp.validate.user.UserLoginValidate;
+import com.bussiness.webapp.validate.user.UserRegisterSaveValidate;
 import com.bussiness.webapp.current_user.CurrentUser;
 import com.bussiness.webapp.error.ErrorFetch;
 import com.bussiness.webapp.user.entity.UserEntity;
